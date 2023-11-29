@@ -2,13 +2,17 @@
   "name": "banana-status",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https//el-tumero.github.io/banana-vrf-status",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.1.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   },
