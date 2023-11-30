@@ -1,6 +1,7 @@
 import './style.css'
 import { ethers } from "ethers"
 import VRFHost from "./VRFHost.json"
+import banana from "./banana400.png"
 
 const RPC = "https://rpc.testnet.lukso.network"
 const contractAddress = "0xD061CEb1F6BE5b6822762893e229FFce5C62C283"
@@ -32,6 +33,7 @@ setup()
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
+    <img class="rotate" src="${banana}" />
     <h2 id="randomNumber"></h2>
     <h4 id="roundId"></h4>
     <h3 id="proposer"></h3>
