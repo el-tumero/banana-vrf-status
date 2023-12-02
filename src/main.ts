@@ -25,6 +25,7 @@ async function setup() {
   proposerField!.innerText = "Proposer: " + proposer
   roundIdField!.innerText = "Round id: " +(currentRoundId - 1)
   blockSince!.innerText = `Blocks since previous round (start): ${blockNumber - Number(height)}`
+  randomNumberTitle!.style.visibility = "visible"
 
   contract.on("NewRound", async (id:number) => {
   const [proposer, randomNumber, , ,height] = await contract.getRound(id - 1)
@@ -39,19 +40,27 @@ async function setup() {
 setup()
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <img class="rotate" src="${banana}" />
-    <h2 id="randomNumber"></h2>
-    <h4 id="roundId"></h4>
-    <h3 id="proposer"></h3>
-    <h5 id="blockSince"></h5>
-    <h5 id="roundState"></h5>
-  </div>
+    <div id="banana-img">
+      <img class="rotate" src="${banana}" />
+    </div>
+    <div id="info">
+      <p id="randomNumberTitle">Generated number:</p>
+      <p id="randomNumber"></p>
+      <p id="roundId"></p>
+      <p id="proposer"></p>
+      <p id="blockSince"></p>
+      <p id="roundState"></p>
+      <a href="https://explorer.consensus.testnet.lukso.network/address/D061CEb1F6BE5b6822762893e229FFce5C62C283">Blockchain Explorer</a>
+    </div>
 `
+
+
 
 const randomNumberField = document.getElementById("randomNumber")
 const proposerField = document.getElementById("proposer")
 const roundIdField = document.getElementById("roundId")
 const blockSince = document.getElementById("blockSince")
 const roundState = document.getElementById("roundState")
+const randomNumberTitle = document.getElementById("randomNumberTitle")
+
 
